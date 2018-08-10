@@ -32,8 +32,7 @@ public class DemoFragment extends BFragment<DemoTasksContract.Presenter> impleme
     @Override
     public void setPresenter(DemoTasksContract.Presenter presenter) {
         /// 7. you should set the value to mPresenter that we can access the functions in Presenter
-        if (mPresenter == null)
-            mPresenter = new DemoTaskPresenter(this);
+        this.mPresenter = presenter;
     }
 
     @Override
@@ -45,5 +44,11 @@ public class DemoFragment extends BFragment<DemoTasksContract.Presenter> impleme
     @Override
     protected void initView(View view) {
 
+    }
+
+    @Override
+    protected void newPresenter() {
+        //8 you must new one instance
+        new DemoTaskPresenter(this);
     }
 }

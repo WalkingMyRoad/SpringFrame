@@ -19,7 +19,7 @@ public abstract class BFragment<T extends BFragmentPresenter> extends Fragment i
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         CFragment.add(this);
-        setPresenter(mPresenter);
+        newPresenter();
     }
 
     @Nullable
@@ -37,6 +37,9 @@ public abstract class BFragment<T extends BFragmentPresenter> extends Fragment i
     public void onResume() {
         super.onResume();
         CFragment.resume(this);
+        if (mPresenter == null){
+            throw new NullPointerException("sorry you mush new an presenter instance in method newPresenter()");
+        }
     }
 
     @Override
@@ -63,4 +66,9 @@ public abstract class BFragment<T extends BFragmentPresenter> extends Fragment i
      * init view
      */
     protected abstract void initView(View view);
+
+    /**
+     * you should new a Presenter instance
+     */
+    protected abstract void newPresenter();
 }

@@ -15,6 +15,7 @@ class DemoTaskPresenter implements DemoTasksContract.Presenter{
 
     public DemoTaskPresenter(@NonNull DemoTasksContract.View view) {
         mView = view;
+        mView.setPresenter(this);
     }
 
 }
